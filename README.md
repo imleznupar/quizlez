@@ -9,7 +9,7 @@ The following are recommended, but not required:
 
 ## Usage
 
-1. go to https://github.com/imleznupar/quizlez
+1. go to [https://github.com/imleznupar/quizlez](https://imleznupar.github.io/quizlez/)
 
 ## How it works
 #### Parsing
