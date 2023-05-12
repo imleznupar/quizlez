@@ -1,0 +1,69 @@
+body
+{
+    background:black;
+    color: white;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    font-size: 5vw;
+    font-family: 'Product Sans', sans-serif;
+    transition: 0.5s;
+}
+button
+{
+    color:gray;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    font-size: 3vw;
+    font-family: 'Product Sans', sans-serif;
+    justify-self: center;
+    display: flex;
+    position: relative;
+    transition: 0.5s;
+}
+button:hover
+{
+    color:white;
+}
+button:focus
+{
+    color:white;
+    outline:none;
+}
+input
+{
+    background: transparent;
+    font-family: 'Product Sans', sans-serif;
+    border: none;
+    font-size: 3vw;
+    color:white;
+    transition: 0.5s;
+}
+input:focus {
+    background: white;
+    color:black;
+    border: none;
+    outline: none;
+}
+.number
+{
+    position:absolute;
+    left:1vw;
+    top:-3vw;
+    margin:0vw;
+    font-size:20vw;
+    color:gray;
+    transition: 0.5s;
+}
+#progress
+{
+    background-color: rgb(20,20,20);
+    position:absolute;
+    left:0vw;
+    height: 100%;
+    overflow: auto;
+    width:0;
+    z-index:-1;
+    transition: 0.5s ease-in-out;
+}
