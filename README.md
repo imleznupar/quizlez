@@ -18,7 +18,7 @@ Take the input list of vocabs and parse them into a list of vocabs, then randomi
 Use ResponsiveVoice to pronounce each vocab
 
 ## To-do List
-- [ ] UI
+- [X] UI
 - [ ] More learning tools
 - [ ] Log-in feature to store vocab lists
 - [ ] Import Quizlet sets
