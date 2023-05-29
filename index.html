@@ -39,10 +39,10 @@
     </div>
     <div id="result" style="display: none;">
         <p class="number"></p>
-        <div>
+        <div id="result2">
             <p id="resultText"></p>
         </div>
-        <div style="display:flex;justify-content:center">
+        <div style="display:flex;justify-content:center;margin-top: 3rem;">
             <button onclick="nextWord()" id="ok">[OK]</button>
         </div>
     </div>
@@ -57,10 +57,10 @@
             </div>
             <div id="listContainer" style="position:absolute;width: 100%;top:5vw;display: flex;justify-content: center;"></div>
         </div>
-        <div style="display:flex;position:fixed;right:1vh;top:2vh;">
-            <button onclick="restart()" style="font-size:4vh;">[Restart]</button>
-            <button onclick="menu()" style="font-size:4vh;">[ Menu ]</button>
-        </div>
+    </div>
+    <div id="tools" style="display:none;position:fixed;right:1vh;top:2vh;">
+        <button onclick="restart()" style="font-size:4vh;">[Restart]</button>
+        <button onclick="menu()" style="font-size:4vh;">[ Menu ]</button>
     </div>
     <script>
         var vocab = []
@@ -79,6 +79,7 @@
             shuffle(vocab)
             console.log(vocab)
             document.getElementById("menu").style.display = "none"
+            document.getElementById("tools").style.display = "flex"
             nextWord()
         })
         document.getElementById("ans").addEventListener("keypress", function(event) {
@@ -89,6 +90,15 @@
         });
 
         function nextWord() {
+            if(document.getElementById("incorrectInput") != null)
+            {
+                if(vocab[currentWord] != document.getElementById("incorrectInput").value)
+                {
+                    console.log("return")
+                    return
+                }
+                document.getElementById("incorrectInput").remove()
+            }
             currentWord+=1
             var progress = (currentWord)/vocab.length*100
             document.getElementById("progress").style.width = progress+"%"
@@ -127,18 +137,35 @@
         function checkAns() {
             document.getElementById("testing").style.display = "none"
             document.getElementById("result").style.display = "block"
-            document.getElementById("ok").focus()
+            
             if(vocab[currentWord] == document.getElementById("ans").value)
             {
+                document.getElementById("ok").focus()
                 document.getElementById("resultText").innerHTML = "Correct!"
                 correct.push(vocab[currentWord])
             } else {
                 document.getElementById("resultText").innerHTML = "Wrong, the correct word is: "+vocab[currentWord]
                 incorrect.push(vocab[currentWord]+" ("+document.getElementById("ans").value+")")
+                inputElement = document.createElement('input')
+                inputElement.id = "incorrectInput"
+                inputElement.style.display = "flex"
+                inputElement.style.justifyContent = "center"
+                inputElement.placeholder = ">Enter correct answer"
+                document.getElementById("result2").appendChild(inputElement)
+                document.getElementById("incorrectInput").focus()
+
             }
         }
+        document.getElementById("ok").addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+                console.log("enter pressed")
+                event.preventDefault();
+                nextWord();
+            }
+        });
 
         function restart() {
+            document.getElementById("incorrectInput").remove()
             document.body.style.background = "black"
             currentWord = -1
             correct = []
@@ -151,6 +178,9 @@
         }
 
         function menu() {
+            document.getElementById("incorrectInput").remove()
+            document.getElementById("testing").style.display = "none"
+            document.getElementById("result").style.display = "none"
             document.body.style.background = "black"
             document.getElementById("progress").style.width = 0+"vw"
             vocab = []
@@ -159,6 +189,7 @@
             correct = []
             incorrect = []
             document.getElementById("end").style.display = "none"
+            document.getElementById("tools").style.display = "none"
             document.getElementById("menu").style.display = "block"
             document.getElementById("input").value = ""
             document.getElementById("separation").value = ""
