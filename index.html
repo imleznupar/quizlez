@@ -72,9 +72,14 @@
             responsiveVoice.setDefaultVoice("Chinese Female");
             separation = document.getElementById('separation').value
             vocab = document.getElementById("input").value.split(separation)
-            for(let i=0;i<vocab.length;i++)
+            for(let i=vocab.length-1;i>=0;i--)
             {
                 vocab[i] = vocab[i].trim()
+                if (vocab[i] == '')
+                {
+                    vocab.splice(i, 1);
+                    // console.log(vocab)
+                }
             }
             shuffle(vocab)
             console.log(vocab)
@@ -165,7 +170,10 @@
         });
 
         function restart() {
-            document.getElementById("incorrectInput").remove()
+            if(document.getElementById("incorrectInput") != null)
+            {
+                document.getElementById("incorrectInput").remove()
+            }
             document.body.style.background = "black"
             currentWord = -1
             correct = []
@@ -178,7 +186,10 @@
         }
 
         function menu() {
-            document.getElementById("incorrectInput").remove()
+            if(document.getElementById("incorrectInput") != null)
+            {
+                document.getElementById("incorrectInput").remove()
+            }
             document.getElementById("testing").style.display = "none"
             document.getElementById("result").style.display = "none"
             document.body.style.background = "black"
