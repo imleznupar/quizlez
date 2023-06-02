@@ -97,7 +97,8 @@
         function nextWord() {
             if(document.getElementById("incorrectInput") != null)
             {
-                if(vocab[currentWord] != document.getElementById("incorrectInput").value)
+                correctIncorrectInput = document.getElementById("incorrectInput").value.trim()
+                if(vocab[currentWord] != correctIncorrectInput)
                 {
                     console.log("return")
                     return
