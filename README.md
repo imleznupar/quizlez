@@ -31,4 +31,4 @@ Use ResponsiveVoice to pronounce each vocab
 * [Quizlet](quizlet.com)
 * [ResponsiveVoice](https://responsivevoice.org/)
 
-For further inquiries, please contact jasminelu23@gmail.com
+For further inquiries, please contact leznuparutube@gmail.com
